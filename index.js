@@ -39,21 +39,21 @@ Airplane.prototype.land = function () {
         + It should return a string with `name` and `age`. Example: "Mary, 50"
 */
 
-function Person(name, age) {    
+function Person(name, age) {
   this.name = name;
   this.age = age;
   this.stomach = [];
 };
-Person.prototype.eat = function(someFood){
-  if(this.stomach.length < 10){ 
+Person.prototype.eat = function (someFood) {
+  if (this.stomach.length < 10) {
     this.stomach.push(someFood);
-   }
-   else{return this.stomach}; //<---- does not need this, passes without it
-  };
-Person.prototype.poop = function(){
+  }
+  else { return this.stomach }; //<---- does not need this, passes without it
+};
+Person.prototype.poop = function () {
   this.stomach = [];
 }
-Person.prototype.toString = function(){
+Person.prototype.toString = function () {
   return `${this.name}, ${this.age}`;
 };
 /*
@@ -79,10 +79,10 @@ function Car(model, milesPerGallon) {
 
 };
 
-Car.prototype.fill = function(gallons){
+Car.prototype.fill = function (gallons) {
   this.tank = this.tank + gallons;
 };
-Car.prototype.drive = function(distance){
+Car.prototype.drive = function (distance) {
   this.odometer = this.odometer += distance;
   this.tank = distance / this.milesPerGallon;
 };
@@ -95,12 +95,14 @@ Car.prototype.drive = function(distance){
         + Should return a string "Playing with x", x being the favorite toy.
 */
 function Baby(name, age, favoriteToy) {
-    Person.call(this, name, age);
-    this. 
-
-    
-
+  Person.call(this, name, age);
+  this.favoriteToy = favoriteToy;
 }
+Baby.prototype = Object.create(Person.prototype);
+Baby.prototype.play = function () {
+  return `Playing with ${this.favoriteToy}`
+}
+
 
 /* 
   TASK 4
